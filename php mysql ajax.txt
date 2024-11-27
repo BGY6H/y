@@ -14,6 +14,8 @@ yes
 
 put a comment beside each line of code without skipping 
 
+yes even if it is repeat please ignore and output the code and comments
+
 
 ############################################################################################
 
