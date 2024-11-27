@@ -379,7 +379,242 @@ Digital Wallets: Includes Apple Pay, Google Pay, and Samsung Pay
 Buy Now, Pay Later: Integrates options like Afterpay or Klarna
 Bank Transfers: Supports direct bank payments
 
+Below is the PHP, MySQL, and AJAX code for implementing the requested e-commerce payment features. Each feature is broken into separate sections with detailed comments for explanation.
 
+---
+
+### **1. Credit/Debit Card Payments**
+```php
+// Connect to the database
+$mysqli = new mysqli("localhost", "username", "password", "ecommerce_db");
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+// Process the credit card payment request (AJAX POST request)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['credit_card_payment'])) {
+    // Capture form input
+    $card_number = $_POST['card_number']; // Card number from the user
+    $card_expiry = $_POST['card_expiry']; // Expiry date in MM/YY
+    $card_cvv = $_POST['card_cvv'];       // Card CVV code
+    $amount = $_POST['amount'];           // Payment amount
+    
+    // Validate the card details (basic validation)
+    if (strlen($card_number) !== 16 || strlen($card_cvv) !== 3) {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid card details']);
+        exit;
+    }
+
+    // Simulate payment gateway processing
+    $payment_status = "Success"; // Mock response (Success or Failure)
+    
+    // Save the transaction in the database
+    $stmt = $mysqli->prepare("INSERT INTO transactions (payment_method, amount, status) VALUES (?, ?, ?)");
+    $stmt->bind_param("sis", $method, $amount, $payment_status);
+    $method = "Credit/Debit Card";
+    $stmt->execute();
+    $stmt->close();
+
+    // Return the payment response
+    echo json_encode(['status' => $payment_status, 'message' => 'Payment processed']);
+}
+```
+
+#### **AJAX Code for Credit Card Payment**
+```javascript
+// Send credit card payment data via AJAX
+$("#payButton").on("click", function () {
+    const paymentData = {
+        credit_card_payment: true,
+        card_number: $("#card_number").val(),
+        card_expiry: $("#card_expiry").val(),
+        card_cvv: $("#card_cvv").val(),
+        amount: $("#amount").val()
+    };
+
+    $.ajax({
+        url: "payment_handler.php", // PHP handler file
+        method: "POST",
+        data: paymentData,
+        success: function (response) {
+            const result = JSON.parse(response);
+            alert(result.message);
+        },
+        error: function () {
+            alert("An error occurred during the payment process.");
+        }
+    });
+});
+```
+
+---
+
+### **2. Digital Wallets**
+```php
+// Handle digital wallet payment (AJAX POST request)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['digital_wallet_payment'])) {
+    $wallet_type = $_POST['wallet_type']; // Wallet type: Apple Pay, Google Pay, etc.
+    $amount = $_POST['amount'];           // Payment amount
+
+    // Simulate wallet authentication
+    if ($wallet_type !== "Apple Pay" && $wallet_type !== "Google Pay" && $wallet_type !== "Samsung Pay") {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid wallet type']);
+        exit;
+    }
+
+    // Simulate payment gateway processing
+    $payment_status = "Success"; // Mock response
+
+    // Save the transaction in the database
+    $stmt = $mysqli->prepare("INSERT INTO transactions (payment_method, amount, status) VALUES (?, ?, ?)");
+    $stmt->bind_param("sis", $method, $amount, $payment_status);
+    $method = "Digital Wallet - " . $wallet_type;
+    $stmt->execute();
+    $stmt->close();
+
+    // Return the payment response
+    echo json_encode(['status' => $payment_status, 'message' => 'Wallet payment successful']);
+}
+```
+
+#### **AJAX Code for Digital Wallets**
+```javascript
+// Send digital wallet payment data via AJAX
+$("#walletPayButton").on("click", function () {
+    const walletData = {
+        digital_wallet_payment: true,
+        wallet_type: $("#wallet_type").val(),
+        amount: $("#amount").val()
+    };
+
+    $.ajax({
+        url: "payment_handler.php",
+        method: "POST",
+        data: walletData,
+        success: function (response) {
+            const result = JSON.parse(response);
+            alert(result.message);
+        },
+        error: function () {
+            alert("An error occurred during the wallet payment process.");
+        }
+    });
+});
+```
+
+---
+
+### **3. Buy Now, Pay Later**
+```php
+// Handle "Buy Now, Pay Later" payment
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buy_now_pay_later'])) {
+    $amount = $_POST['amount'];   // Payment amount
+    $provider = $_POST['provider']; // Provider like Afterpay or Klarna
+
+    // Validate provider
+    if ($provider !== "Afterpay" && $provider !== "Klarna") {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid provider']);
+        exit;
+    }
+
+    // Mock payment approval
+    $payment_status = "Pending Approval";
+
+    // Save the transaction in the database
+    $stmt = $mysqli->prepare("INSERT INTO transactions (payment_method, amount, status) VALUES (?, ?, ?)");
+    $stmt->bind_param("sis", $method, $amount, $payment_status);
+    $method = "Buy Now, Pay Later - " . $provider;
+    $stmt->execute();
+    $stmt->close();
+
+    echo json_encode(['status' => 'pending', 'message' => 'Your payment is pending approval']);
+}
+```
+
+#### **AJAX Code for Buy Now, Pay Later**
+```javascript
+// Send "Buy Now, Pay Later" data via AJAX
+$("#bnplButton").on("click", function () {
+    const bnplData = {
+        buy_now_pay_later: true,
+        provider: $("#provider").val(),
+        amount: $("#amount").val()
+    };
+
+    $.ajax({
+        url: "payment_handler.php",
+        method: "POST",
+        data: bnplData,
+        success: function (response) {
+            const result = JSON.parse(response);
+            alert(result.message);
+        },
+        error: function () {
+            alert("An error occurred during the BNPL process.");
+        }
+    });
+});
+```
+
+---
+
+### **4. Bank Transfers**
+```php
+// Handle bank transfer payment
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bank_transfer_payment'])) {
+    $bank_name = $_POST['bank_name'];   // Bank used for transfer
+    $amount = $_POST['amount'];        // Payment amount
+    $transaction_id = $_POST['transaction_id']; // Bank-provided transaction ID
+
+    // Validate bank and transaction details
+    if (empty($transaction_id)) {
+        echo json_encode(['status' => 'error', 'message' => 'Transaction ID is required']);
+        exit;
+    }
+
+    // Save the transaction in the database
+    $stmt = $mysqli->prepare("INSERT INTO transactions (payment_method, amount, status, transaction_id) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("siss", $method, $amount, $status, $transaction_id);
+    $method = "Bank Transfer - " . $bank_name;
+    $status = "Pending Verification";
+    $stmt->execute();
+    $stmt->close();
+
+    echo json_encode(['status' => 'pending', 'message' => 'Bank transfer received. Awaiting verification.']);
+}
+```
+
+#### **AJAX Code for Bank Transfers**
+```javascript
+// Send bank transfer details via AJAX
+$("#bankTransferButton").on("click", function () {
+    const transferData = {
+        bank_transfer_payment: true,
+        bank_name: $("#bank_name").val(),
+        transaction_id: $("#transaction_id").val(),
+        amount: $("#amount").val()
+    };
+
+    $.ajax({
+        url: "payment_handler.php",
+        method: "POST",
+        data: transferData,
+        success: function (response) {
+            const result = JSON.parse(response);
+            alert(result.message);
+        },
+        error: function () {
+            alert("An error occurred during the bank transfer process.");
+        }
+    });
+});
+```
+
+---
+
+This code covers the back-end (PHP/MySQL) and front-end (AJAX) for all the requested payment features. Let me know if you need assistance setting up or testing any of these!
 
 _____________________________________________________________________________________________________________________________
 
