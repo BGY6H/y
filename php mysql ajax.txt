@@ -1,5 +1,19 @@
 
 
+what additional features can we add to this
+
+how many features can we add to this
+
+how can we extend this further
+
+please extnd it with the features you have mentioned
+
+yes
+
+put a comment beside each line of code without skipping 
+
+
+
 
 we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Ajax code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
 _____
