@@ -603,7 +603,215 @@ Flash Sale Countdown: Timer for limitedtime deals
 Personalized Recommendations: Shows items based on user preferences
 
 
+Here’s the PHP, MySQL, and JavaScript code for each requested feature, with inline comments beside every line of code:
 
+---
+
+### 1. **New Arrivals Section**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch recently added products
+$sql = "SELECT * FROM products ORDER BY created_at DESC LIMIT 10"; // Fetch 10 most recent products
+$result = $conn->query($sql); // Execute the query
+
+// Return the results as JSON
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; // Add each row to the data array
+}
+echo json_encode($data); // Output the data as JSON
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch new arrivals on page load
+fetch('getNewArrivals.php') // Request new arrivals from the server
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        const newArrivalsContainer = document.getElementById('newArrivals'); // Get the new arrivals container
+        data.forEach(product => {
+            const div = document.createElement('div'); // Create a new div for each product
+            div.textContent = `${product.name} - $${product.price}`; // Display product name and price
+            newArrivalsContainer.appendChild(div); // Append product to the container
+        });
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- New Arrivals section -->
+<div id="newArrivals" class="new-arrivals">
+    <!-- Dynamic product list will load here -->
+</div>
+```
+
+---
+
+### 2. **Top-Selling Products**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch top-selling products
+$sql = "SELECT * FROM products ORDER BY sales DESC LIMIT 10"; // Fetch top 10 products by sales
+$result = $conn->query($sql); // Execute the query
+
+// Return the results as JSON
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; // Add each row to the data array
+}
+echo json_encode($data); // Output the data as JSON
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch top-selling products on page load
+fetch('getTopSelling.php') // Request top-selling products from the server
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        const topSellingContainer = document.getElementById('topSelling'); // Get the top-selling container
+        data.forEach(product => {
+            const div = document.createElement('div'); // Create a new div for each product
+            div.textContent = `${product.name} - $${product.price}`; // Display product name and price
+            topSellingContainer.appendChild(div); // Append product to the container
+        });
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Top-Selling Products section -->
+<div id="topSelling" class="top-selling">
+    <!-- Dynamic product list will load here -->
+</div>
+```
+
+---
+
+### 3. **Flash Sale Countdown**
+
+**HTML and JavaScript**:  
+```html
+<!-- Flash Sale Countdown section -->
+<div id="flashSale">
+    <h2>Flash Sale Ends In: <span id="countdown"></span></h2> <!-- Timer display -->
+</div>
+
+<script>
+// Set the end time for the flash sale
+const flashSaleEndTime = new Date('2024-12-01T23:59:59').getTime(); // Set the sale end date and time
+
+// Function to update the countdown
+function updateCountdown() {
+    const now = new Date().getTime(); // Get the current time
+    const distance = flashSaleEndTime - now; // Calculate time remaining
+
+    if (distance < 0) { // Check if the sale has ended
+        document.getElementById('countdown').textContent = 'Sale Ended'; // Display sale ended message
+        clearInterval(countdownInterval); // Stop the countdown
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24)); // Calculate days remaining
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Calculate hours remaining
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Calculate minutes remaining
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000); // Calculate seconds remaining
+
+    document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`; // Update the countdown display
+}
+
+// Update the countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000); // Set interval for the countdown
+```
+
+---
+
+### 4. **Personalized Recommendations**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Simulate user preferences (e.g., categories they like)
+$userId = $_GET['userId']; // Get user ID from request
+$sql = "SELECT category FROM user_preferences WHERE user_id = $userId"; // Fetch user preferences
+$result = $conn->query($sql); // Execute the query
+
+// If user preferences exist
+$preferences = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $preferences[] = $row['category']; // Add each preferred category
+    }
+    $categories = "'" . implode("','", $preferences) . "'"; // Convert array to string for SQL query
+    $sql = "SELECT * FROM products WHERE category IN ($categories) LIMIT 10"; // Fetch products matching preferences
+} else {
+    $sql = "SELECT * FROM products LIMIT 10"; // Fallback: fetch random products
+}
+
+$result = $conn->query($sql); // Execute the query
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; // Add each product to the data array
+}
+echo json_encode($data); // Output the data as JSON
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch personalized recommendations on page load
+fetch('getRecommendations.php?userId=1') // Request recommendations for user ID 1
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        const recommendationsContainer = document.getElementById('recommendations'); // Get the recommendations container
+        data.forEach(product => {
+            const div = document.createElement('div'); // Create a new div for each product
+            div.textContent = `${product.name} - $${product.price}`; // Display product name and price
+            recommendationsContainer.appendChild(div); // Append product to the container
+        });
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Personalized Recommendations section -->
+<div id="recommendations" class="recommendations">
+    <!-- Dynamic product list will load here -->
+</div>
+```
+
+---
+
+Let me know if you need further assistance integrating these into your teaching template!
 _____________________________________________________________________________________________________________________________
 
 we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
