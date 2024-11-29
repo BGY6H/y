@@ -822,7 +822,206 @@ Trending Products: Displays items gaining popularity
 Quick Links Section: Includes FAQs, contact info, and return policies
 
 
+Here’s the PHP, MySQL, and JavaScript code for each requested feature, with inline comments beside every line of code:
 
+---
+
+### 1. **Seasonal Promotions**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch active seasonal promotions
+$sql = "SELECT * FROM promotions WHERE active = 1 AND season = 'Winter'"; // Fetch active promotions for the current season
+$result = $conn->query($sql); // Execute the query
+
+// Return the results as JSON
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; // Add each promotion to the data array
+}
+echo json_encode($data); // Output the data as JSON
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch seasonal promotions on page load
+fetch('getPromotions.php') // Request active promotions from the server
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        const promotionsContainer = document.getElementById('promotions'); // Get the promotions container
+        data.forEach(promotion => {
+            const div = document.createElement('div'); // Create a new div for each promotion
+            div.innerHTML = `<h3>${promotion.title}</h3><p>${promotion.description}</p>`; // Add promotion details
+            promotionsContainer.appendChild(div); // Append promotion to the container
+        });
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Seasonal Promotions section -->
+<div id="promotions" class="seasonal-promotions">
+    <!-- Dynamic promotions will load here -->
+</div>
+```
+
+---
+
+### 2. **Customer Testimonials**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch approved customer testimonials
+$sql = "SELECT * FROM testimonials WHERE approved = 1 ORDER BY created_at DESC LIMIT 5"; // Fetch 5 most recent approved testimonials
+$result = $conn->query($sql); // Execute the query
+
+// Return the results as JSON
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; // Add each testimonial to the data array
+}
+echo json_encode($data); // Output the data as JSON
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch customer testimonials on page load
+fetch('getTestimonials.php') // Request testimonials from the server
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        const testimonialsContainer = document.getElementById('testimonials'); // Get the testimonials container
+        data.forEach(testimonial => {
+            const div = document.createElement('div'); // Create a new div for each testimonial
+            div.innerHTML = `<blockquote>${testimonial.message}</blockquote><p>- ${testimonial.customer_name}</p>`; // Add testimonial details
+            testimonialsContainer.appendChild(div); // Append testimonial to the container
+        });
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Customer Testimonials section -->
+<div id="testimonials" class="customer-testimonials">
+    <!-- Dynamic testimonials will load here -->
+</div>
+```
+
+---
+
+### 3. **Trending Products**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch trending products based on views or purchases
+$sql = "SELECT * FROM products ORDER BY views DESC LIMIT 10"; // Fetch top 10 products by views
+$result = $conn->query($sql); // Execute the query
+
+// Return the results as JSON
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; // Add each product to the data array
+}
+echo json_encode($data); // Output the data as JSON
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch trending products on page load
+fetch('getTrending.php') // Request trending products from the server
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        const trendingContainer = document.getElementById('trending'); // Get the trending products container
+        data.forEach(product => {
+            const div = document.createElement('div'); // Create a new div for each product
+            div.innerHTML = `<h4>${product.name}</h4><p>$${product.price}</p>`; // Add product details
+            trendingContainer.appendChild(div); // Append product to the container
+        });
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Trending Products section -->
+<div id="trending" class="trending-products">
+    <!-- Dynamic trending products will load here -->
+</div>
+```
+
+---
+
+### 4. **Quick Links Section**
+
+**HTML and CSS**:  
+```html
+<!-- Quick Links section -->
+<div id="quickLinks" class="quick-links">
+    <h3>Quick Links</h3> <!-- Section heading -->
+    <ul>
+        <li><a href="faq.php">FAQs</a></li> <!-- Link to FAQs -->
+        <li><a href="contact.php">Contact Us</a></li> <!-- Link to contact page -->
+        <li><a href="returns.php">Return Policies</a></li> <!-- Link to return policies -->
+    </ul>
+</div>
+
+<style>
+.quick-links {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 5px; /* Add rounded corners */
+}
+.quick-links h3 {
+    margin-bottom: 15px; /* Add spacing below heading */
+}
+.quick-links ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+.quick-links li {
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+.quick-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Link color */
+}
+.quick-links a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+</style>
+```
+
+---
+
+Let me know if you need any additional features or further adjustments for your teaching template!
 
 _____________________________________________________________________________________________________________________________
 
