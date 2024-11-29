@@ -1032,7 +1032,171 @@ Price Display: Shows the price with optional discount percentage
 Product Description: Includes details, features, and benefits
 
 
+Here is the PHP, MySQL, and JavaScript code for the requested features with inline comments beside each line:
 
+---
+
+### 1. **Product Title**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with your database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch product details by product ID
+$product_id = $_GET['product_id']; // Get product ID from the request
+$sql = "SELECT title FROM products WHERE id = $product_id"; // Fetch product title from the database
+$result = $conn->query($sql); // Execute the query
+
+// Return the product title
+if ($result->num_rows > 0) { // Check if the product exists
+    $row = $result->fetch_assoc(); // Fetch the product data
+    echo $row['title']; // Output the product title
+} else {
+    echo "Product not found"; // Output error if product is not found
+}
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch product title on page load
+fetch('getProductTitle.php?product_id=1') // Request product title for product ID 1
+    .then(response => response.text()) // Parse the response as plain text
+    .then(title => {
+        const titleContainer = document.getElementById('productTitle'); // Get the product title container
+        titleContainer.textContent = title; // Display the product title
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Product Title section -->
+<h1 id="productTitle" class="product-title">
+    <!-- Dynamic product title will load here -->
+</h1>
+```
+
+---
+
+### 2. **Price Display**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with your database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch product price and discount
+$product_id = $_GET['product_id']; // Get product ID from the request
+$sql = "SELECT price, discount FROM products WHERE id = $product_id"; // Fetch price and discount from the database
+$result = $conn->query($sql); // Execute the query
+
+// Return the price and discount
+if ($result->num_rows > 0) { // Check if the product exists
+    $row = $result->fetch_assoc(); // Fetch the product data
+    echo json_encode($row); // Output price and discount as JSON
+} else {
+    echo json_encode(["error" => "Product not found"]); // Output error if product is not found
+}
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch product price and discount on page load
+fetch('getProductPrice.php?product_id=1') // Request price and discount for product ID 1
+    .then(response => response.json()) // Parse the response as JSON
+    .then(data => {
+        const priceContainer = document.getElementById('productPrice'); // Get the product price container
+        const discountContainer = document.getElementById('discount'); // Get the discount container
+
+        if (data.error) { // Check if there is an error
+            priceContainer.textContent = data.error; // Display error message
+        } else {
+            const finalPrice = data.price - (data.price * (data.discount / 100)); // Calculate the final price
+            priceContainer.textContent = `Price: $${finalPrice.toFixed(2)}`; // Display the final price
+            if (data.discount > 0) { // Check if a discount exists
+                discountContainer.textContent = `Discount: ${data.discount}% off`; // Display the discount percentage
+            }
+        }
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Product Price section -->
+<p id="productPrice" class="product-price">
+    <!-- Dynamic product price will load here -->
+</p>
+<p id="discount" class="product-discount">
+    <!-- Discount information will load here -->
+</p>
+```
+
+---
+
+### 3. **Product Description**
+
+**PHP Backend**:  
+```php
+<?php
+// Establish MySQL connection
+$conn = new mysqli('localhost', 'username', 'password', 'database'); // Replace with your database credentials
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error); // Output error if connection fails
+}
+
+// Query to fetch product description
+$product_id = $_GET['product_id']; // Get product ID from the request
+$sql = "SELECT description FROM products WHERE id = $product_id"; // Fetch product description from the database
+$result = $conn->query($sql); // Execute the query
+
+// Return the product description
+if ($result->num_rows > 0) { // Check if the product exists
+    $row = $result->fetch_assoc(); // Fetch the product data
+    echo $row['description']; // Output the product description
+} else {
+    echo "Description not available"; // Output error if description is not available
+}
+?>
+```
+
+**JavaScript Frontend**:  
+```javascript
+// Fetch product description on page load
+fetch('getProductDescription.php?product_id=1') // Request product description for product ID 1
+    .then(response => response.text()) // Parse the response as plain text
+    .then(description => {
+        const descriptionContainer = document.getElementById('productDescription'); // Get the product description container
+        descriptionContainer.textContent = description; // Display the product description
+    });
+```
+
+**HTML Structure**:  
+```html
+<!-- Product Description section -->
+<p id="productDescription" class="product-description">
+    <!-- Dynamic product description will load here -->
+</p>
+```
+
+---
+
+Let me know if you need any further assistance or additional features!
 _____________________________________________________________________________________________________________________________
 
 we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
