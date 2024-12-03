@@ -2239,8 +2239,207 @@ OnePage Checkout: Combines all steps into one page
 Multiple Payment Options: Offers credit cards, PayPal, etc
 Address AutoComplete: Suggests addresses during input
 
+Here's the code with comments for each of the features you mentioned:
 
+### **Guest Checkout: Allows users to purchase without creating an account**
 
+```php
+// Check if the user is logged in or using guest checkout
+if (!isset($_SESSION['user_id'])) {  // No user session, guest checkout
+    // Display guest checkout option
+    echo "<h2>Guest Checkout</h2>";
+    echo "<form method='post' action='checkout.php'>";  // Submit to checkout.php
+    echo "<label for='email'>Email Address:</label>";
+    echo "<input type='email' name='email' required>";  // Guest email input
+    echo "<label for='billing_address'>Billing Address:</label>";
+    echo "<input type='text' name='billing_address' required>";  // Billing address input
+    echo "<input type='submit' value='Proceed to Checkout'>";
+    echo "</form>";
+} else {
+    // User is logged in, proceed with regular checkout process
+    echo "<h2>Logged In Checkout</h2>";
+    // (Logged-in checkout process would continue here)
+}
+```
+
+### **OnePage Checkout: Combines all steps into one page**
+
+```php
+// Display all checkout fields on one page
+echo "<form method='post' action='process_checkout.php'>";
+echo "<h2>Checkout</h2>";
+
+// Personal details section
+echo "<label for='name'>Full Name:</label>";
+echo "<input type='text' name='name' required>";
+echo "<label for='email'>Email Address:</label>";
+echo "<input type='email' name='email' required>";
+
+// Shipping details section
+echo "<label for='shipping_address'>Shipping Address:</label>";
+echo "<input type='text' name='shipping_address' required>";
+
+// Payment details section
+echo "<label for='credit_card'>Credit Card Number:</label>";
+echo "<input type='text' name='credit_card' required>";
+echo "<label for='expiry_date'>Expiry Date:</label>";
+echo "<input type='text' name='expiry_date' required>";
+
+// Submit button for the one-page checkout
+echo "<input type='submit' value='Complete Purchase'>";
+echo "</form>";
+```
+
+### **Multiple Payment Options: Offers credit cards, PayPal, etc**
+
+```php
+// Display available payment options on checkout page
+echo "<h2>Select Payment Method</h2>";
+echo "<form method='post' action='process_payment.php'>";
+
+// Credit Card option
+echo "<label for='credit_card'>Credit Card:</label>";
+echo "<input type='radio' name='payment_method' value='credit_card' required>";
+
+// PayPal option
+echo "<label for='paypal'>PayPal:</label>";
+echo "<input type='radio' name='payment_method' value='paypal'>";
+
+// Bank Transfer option
+echo "<label for='bank_transfer'>Bank Transfer:</label>";
+echo "<input type='radio' name='payment_method' value='bank_transfer'>";
+
+// Submit button for payment method
+echo "<input type='submit' value='Proceed with Payment'>";
+echo "</form>";
+```
+
+### **Address AutoComplete: Suggests addresses during input**
+
+```php
+// Using a third-party API like Google Places for address autocomplete
+echo "<label for='address'>Shipping Address:</label>";
+echo "<input type='text' id='address' name='address' placeholder='Enter your address' required>";
+
+echo "<script src='https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places'></script>";
+echo "<script>";
+echo "var input = document.getElementById('address');";  // Get the address input field
+echo "var autocomplete = new google.maps.places.Autocomplete(input);";  // Initialize autocomplete API
+echo "</script>";
+```
+
+### Summary of Modifications:
+1. **Guest Checkout**: Provides an option for users to checkout without an account, including email and billing address fields.
+2. **OnePage Checkout**: Combines all checkout steps (personal details, shipping, and payment) into one page.
+3. **Multiple Payment Options**: Lets users choose between different payment methods like credit card, PayPal, and bank transfer.
+4. **Address AutoComplete**: Uses Google Places API to provide address suggestions as the user types.
+
+These additions will make the checkout process more flexible and user-friendly, and they'll significantly improve the customer experience by simplifying the process. Let me know if you'd like any further changes or additional features!
+Apologies for the confusion! Here's the corrected code with full PHP implementation for each feature, including comments:
+
+### **Guest Checkout: Allows users to purchase without creating an account**
+
+```php
+<?php
+// Check if the user is logged in or using guest checkout
+if (!isset($_SESSION['user_id'])) {  // No user session, guest checkout
+    // Display guest checkout option
+    echo "<h2>Guest Checkout</h2>";
+    echo "<form method='post' action='checkout.php'>";  // Submit to checkout.php
+    echo "<label for='email'>Email Address:</label>";
+    echo "<input type='email' name='email' required>";  // Guest email input
+    echo "<label for='billing_address'>Billing Address:</label>";
+    echo "<input type='text' name='billing_address' required>";  // Billing address input
+    echo "<input type='submit' value='Proceed to Checkout'>";
+    echo "</form>";
+} else {
+    // User is logged in, proceed with regular checkout process
+    echo "<h2>Logged In Checkout</h2>";
+    // (Logged-in checkout process would continue here)
+}
+?>
+```
+
+### **OnePage Checkout: Combines all steps into one page**
+
+```php
+<?php
+// Display all checkout fields on one page
+echo "<form method='post' action='process_checkout.php'>";
+echo "<h2>Checkout</h2>";
+
+// Personal details section
+echo "<label for='name'>Full Name:</label>";
+echo "<input type='text' name='name' required>";
+echo "<label for='email'>Email Address:</label>";
+echo "<input type='email' name='email' required>";
+
+// Shipping details section
+echo "<label for='shipping_address'>Shipping Address:</label>";
+echo "<input type='text' name='shipping_address' required>";
+
+// Payment details section
+echo "<label for='credit_card'>Credit Card Number:</label>";
+echo "<input type='text' name='credit_card' required>";
+echo "<label for='expiry_date'>Expiry Date:</label>";
+echo "<input type='text' name='expiry_date' required>";
+
+// Submit button for the one-page checkout
+echo "<input type='submit' value='Complete Purchase'>";
+echo "</form>";
+?>
+```
+
+### **Multiple Payment Options: Offers credit cards, PayPal, etc**
+
+```php
+<?php
+// Display available payment options on checkout page
+echo "<h2>Select Payment Method</h2>";
+echo "<form method='post' action='process_payment.php'>";
+
+// Credit Card option
+echo "<label for='credit_card'>Credit Card:</label>";
+echo "<input type='radio' name='payment_method' value='credit_card' required>";
+
+// PayPal option
+echo "<label for='paypal'>PayPal:</label>";
+echo "<input type='radio' name='payment_method' value='paypal'>";
+
+// Bank Transfer option
+echo "<label for='bank_transfer'>Bank Transfer:</label>";
+echo "<input type='radio' name='payment_method' value='bank_transfer'>";
+
+// Submit button for payment method
+echo "<input type='submit' value='Proceed with Payment'>";
+echo "</form>";
+?>
+```
+
+### **Address AutoComplete: Suggests addresses during input**
+
+```php
+<?php
+// Using a third-party API like Google Places for address autocomplete
+echo "<label for='address'>Shipping Address:</label>";
+echo "<input type='text' id='address' name='address' placeholder='Enter your address' required>";
+
+echo "<script src='https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places'></script>";
+echo "<script>";
+echo "var input = document.getElementById('address');";  // Get the address input field
+echo "var autocomplete = new google.maps.places.Autocomplete(input);";  // Initialize autocomplete API
+echo "</script>";
+?>
+```
+
+### Summary of Modifications:
+
+1. **Guest Checkout**: Enables guest users to make a purchase by simply entering their email address and billing details without needing to create an account.
+2. **OnePage Checkout**: All steps of the checkout process (personal details, shipping, and payment) are combined into one page for ease of use.
+3. **Multiple Payment Options**: Provides users with a selection of payment methods (credit card, PayPal, bank transfer) for flexibility.
+4. **Address AutoComplete**: Uses Google Places API to suggest addresses while the user types, making the address entry process faster and more accurate.
+
+These features should significantly improve the checkout experience and make it more user-friendly. Let me know if you need any further enhancements or explanations!
 _____________________________________________________________________________________________________________________________
 
 we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
