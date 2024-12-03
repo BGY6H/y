@@ -7,7 +7,65 @@ __________________________________________________________________________
 
 please give me ruby code for `if`, `elsif`, `else` – Conditional statements for branching logic. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
+Sure! Below is an example of Ruby code that demonstrates how to use `if`, `elsif`, and `else` for conditional statements, with comments beside each line explaining the logic:
 
+### **Ruby Code for Conditional Statements (`if`, `elsif`, `else`)**
+
+```ruby
+age = 25  # Set the variable `age` to 25
+
+if age >= 18  # Check if `age` is greater than or equal to 18
+  puts "You are an adult."  # If the condition is true (age >= 18), this message will be printed
+elsif age >= 13  # If the first condition is false, check if `age` is greater than or equal to 13
+  puts "You are a teenager."  # If the condition is true (age >= 13), this message will be printed
+else  # If none of the above conditions are true (age < 13), the `else` block will run
+  puts "You are a child."  # If `age` is less than 13, this message will be printed
+end  # End of the conditional block
+```
+
+### **Explanation of the Code:**
+
+- **`age = 25`**: This line assigns the value `25` to the variable `age`. This is the value that will be evaluated in the conditional statements.
+  
+- **`if age >= 18`**: The `if` statement checks whether `age` is greater than or equal to `18`. If this condition is true, it will execute the code inside the `if` block (`puts "You are an adult."`).
+
+- **`puts "You are an adult."`**: If the condition `age >= 18` is true, this line will print the message "You are an adult."
+
+- **`elsif age >= 13`**: If the `if` condition (`age >= 18`) is false, the `elsif` (else if) condition is checked. It checks if `age` is greater than or equal to `13`. If this condition is true, it will execute the code inside the `elsif` block (`puts "You are a teenager."`).
+
+- **`puts "You are a teenager."`**: If the `elsif` condition (`age >= 13`) is true, this line will print the message "You are a teenager."
+
+- **`else`**: The `else` block is executed if neither the `if` nor the `elsif` conditions are true. It serves as the default case when no previous conditions were met.
+
+- **`puts "You are a child."`**: If `age` is less than 13, this line will print "You are a child."
+
+- **`end`**: This marks the end of the conditional block. It indicates that the `if`-`elsif`-`else` statements are finished.
+
+### **What happens when the code runs?**
+Given that `age = 25`, the condition `age >= 18` is true, so the output will be:
+
+```
+You are an adult.
+```
+
+If you change the `age` value, different messages will be printed based on the conditions.
+
+### **Examples with Different `age` Values:**
+1. **If `age = 25`:**
+   - Output: `"You are an adult."`
+   
+2. **If `age = 15`:**
+   - Output: `"You are a teenager."`
+   
+3. **If `age = 10`:**
+   - Output: `"You are a child."`
+
+### **Summary of Conditional Statements:**
+- **`if`**: Used to check a condition. If the condition is true, it runs the code block inside it.
+- **`elsif`**: Used to check additional conditions if the previous `if` or `elsif` conditions were false.
+- **`else`**: Used as a default when all previous conditions are false.
+
+Let me know if you need further clarification or more examples!
 __________________________________________________________________________
 
 
@@ -247,13 +305,6 @@ my_car.stop_engine  # Call the `stop_engine` method on `my_car` to simulate stop
 - **Calling Methods**: You can call a method on an object using the dot notation (`object.method_name`).
 
 Let me know if you'd like more examples or clarification!
-__________________________________________________________________________
-
-
-
-
-
-
 __________________________________________________________________________
 
 `initialize` – Constructor method used to set up an object when it’s created. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
