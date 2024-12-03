@@ -1197,48 +1197,6 @@ fetch('getProductDescription.php?product_id=1') // Request product description f
 ---
 
 Let me know if you need any further assistance or additional features!
-_____________________________________________________________________________________________________________________________
-
-we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
-_____
-HighQuality Images: Allows zooming and multiple image views
-Degree View: Interactive view of the product
-Video Demonstrations: Embeds product videos for better understanding
-Customer Reviews: Displays user ratings and comments
-
-
-
-_____________________________________________________________________________________________________________________________
-
-we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
-_____
-Product Variants: Options for size, color, or model
-Stock Availability: Shows if the product is in or out of stock
-Delivery Estimate: Predicts the delivery date based on location
-
-
-
-
-_____________________________________________________________________________________________________________________________
-
-we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
-_____
-Product Filtering and Sorting
-Category Filters: Filter products by categories or subcategories
-Price Range Filter: Adjusts products displayed based on budget
-Brand Filter: Filters items by brand
-
-
-
-_____________________________________________________________________________________________________________________________
-
-we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
-_____
-Ratings Filter: Displays items with specific ratings or above
-Sort by Price: Ascending or descending price sorting
-Sort by Popularity: Orders items by popularity or sales
-Material Filter: Filters products by material type (eg, cotton, leather)
-
 
 
 _____________________________________________________________________________________________________________________________
@@ -2438,8 +2396,55 @@ echo "</script>";
 2. **OnePage Checkout**: All steps of the checkout process (personal details, shipping, and payment) are combined into one page for ease of use.
 3. **Multiple Payment Options**: Provides users with a selection of payment methods (credit card, PayPal, bank transfer) for flexibility.
 4. **Address AutoComplete**: Uses Google Places API to suggest addresses while the user types, making the address entry process faster and more accurate.
+_____________________________________________________________________________________________________________________________
 
-These features should significantly improve the checkout experience and make it more user-friendly. Let me know if you need any further enhancements or explanations!
+please give me php mysql javascript code for 
+
+. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+
+
+please give me php mysql javascript code for HighQuality Images: Allows zooming and multiple image views. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+
+please give me php mysql javascript code for Degree View: Interactive view of the product. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+
+please give me php mysql javascript code for Video Demonstrations: Embeds product videos for better understanding. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+
+please give me php mysql javascript code for Customer Reviews: Displays user ratings and comments. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+
+
+
+
+_____________________________________________________________________________________________________________________________
+
+we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
+_____
+Product Variants: Options for size, color, or model
+Stock Availability: Shows if the product is in or out of stock
+Delivery Estimate: Predicts the delivery date based on location
+
+
+
+
+_____________________________________________________________________________________________________________________________
+
+we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
+_____
+Product Filtering and Sorting
+Category Filters: Filter products by categories or subcategories
+Price Range Filter: Adjusts products displayed based on budget
+Brand Filter: Filters items by brand
+
+
+
+_____________________________________________________________________________________________________________________________
+
+we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
+_____
+Ratings Filter: Displays items with specific ratings or above
+Sort by Price: Ascending or descending price sorting
+Sort by Popularity: Orders items by popularity or sales
+Material Filter: Filters products by material type (eg, cotton, leather)
+
 _____________________________________________________________________________________________________________________________
 
 we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
