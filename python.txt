@@ -1495,9 +1495,6 @@ Auction Feature: Lets users bid on products
 Dynamic Pricing: Adjusts prices based on supply and demand
 Virtual TryOn: Uses AR for products like glasses or clothing
 
-____________________________________________________________________________________________________________________________
-
-
 universitydenverQA
 
 ilovechatgptQA
