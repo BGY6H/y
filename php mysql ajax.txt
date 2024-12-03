@@ -2264,41 +2264,8 @@ TwoFactor Authentication (FA): Adds an extra layer of login security
 
 _____________________________________________________________________________________________________________________________
 
-_____________________________________________________________________________________________________________________________
 
-universitydenver@gmailcom
-
-universitydenverQA
-
-
-
-
-universitydenver1@gmail.com
-
-ilovechatgpt1QA
-
-
-
-
-
-universitydenver@gmailcom
-
-ilovegithubQA
-
-unBGYH
-
-https://githubcom/BGYH/y
-
------BEGIN CERTIFICATE-----
-c2stcHJvai16Yy1IRzNHWGxfNW92cmxDZVZzY0F2OWd1QlAyRm82NWJBNmJhdDFN
-U09wU3BEZnJBbGtWVHp1ZnRYZURqX0tWQU5jT3BCNVdhTlQzQmxia0ZKLXFXak1L
-YThBa1BVQmdnN2p1Z2lleVBuaEM5aTRIQnM4QURUWGl6SEhkUTNHaTFyOGZmN3lD
-NXl3cDBCbWxKNXFDZU1vUE5wY0E=
------END CERTIFICATE-----
-
-_____________________________________________________________________________________________________________________________
-
-_____________________________________________________________________________________________________________________________
+universitydenver
 
 we are creating a teaching template for our University of Denver programming modules. create PHP MySQL Javascript code for each of the following features and put a comment beside each line of code without skipping. dont put above or below 
 _____
@@ -2466,6 +2433,5 @@ _____
 GeoTargeted Content: Displays regionspecific deals and products
 AI Chatbots: Provides intelligent, automated customer support
 Custom Product Builder: Lets users configure and personalize products (eg, custom Tshirts)
-
 
 
