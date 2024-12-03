@@ -1,113 +1,99 @@
 
-please give me java xml code for android-ecommerce app with Quick Links to Popular Products  Highlight trending items on the home screen . put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+ . put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
-. Control Structures
-`if`, `elsif`, `else` – Conditional statements for branching logic. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `if`, `elsif`, `else` – Conditional statements for branching logic. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
-`unless` – The opposite of `if`, executes code if the condition is false. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `unless` – The opposite of `if`, executes code if the condition is false. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
- put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
-
-
-__________________________________________________________________________
-
-
-
-`case`, `when`, `else` – Switchlike conditional statement. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`while` – Loop that runs while a condition is true. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `case`, `when`, `else` – Switchlike conditional statement. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`until` – Loop that runs until a condition is true (opposite of `while`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `while` – Loop that runs while a condition is true. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-
-
-
-__________________________________________________________________________
-
-`for` – Traditional for loop (less common in Ruby, but still available). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `until` – Loop that runs until a condition is true (opposite of `while`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`each` – Iterates over collections (like arrays, hashes, etc.). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `for` – Traditional for loop (less common in Ruby, but still available). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`break` – Exits a loop or iteration. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `each` – Iterates over collections (like arrays, hashes, etc.). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`next` – Skips to the next iteration in a loop. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `break` – Exits a loop or iteration. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`redo` – Repeats the current iteration of a loop. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `next` – Skips to the next iteration in a loop. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-`retry` – Retrying a block after an error (in combination with `begin`/`rescue`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `redo` – Repeats the current iteration of a loop. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
 
-
-
-
-__________________________________________________________________________
-
-
-. ObjectOriented Programming (OOP) Constructs
-Classes – Define blueprints for creating objects (`class MyClass`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `retry` – Retrying a block after an error (in combination with `begin`/`rescue`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
 
 
+please give me ruby code for Classes – Define blueprints for creating objects (`class MyClass`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
-Objects – Instances of a class that hold state and behavior. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+
+__________________________________________________________________________
+
+
+
+please give me ruby code for Objects – Instances of a class that hold state and behavior. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
