@@ -183,7 +183,70 @@ __________________________________________________________________________
 
 please give me ruby code for Methods – Functions defined within a class (`def my_method`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
+Certainly! Here's an example of Ruby code that demonstrates how to define methods within a class using the `def` keyword. I'll include comments beside each line to explain it in simple terms for beginners.
 
+### **Ruby Class with Methods**
+
+```ruby
+class Car  # Define a class called `Car`
+  
+  def initialize(make, model)  # Define a special method called `initialize` that runs when a new object is created
+    @make = make  # Set the `@make` instance variable to the value passed to `make`
+    @model = model  # Set the `@model` instance variable to the value passed to `model`
+  end
+  
+  def display_info  # Define a method called `display_info`
+    puts "Car Make: #{@make}, Model: #{@model}"  # Prints the make and model of the car using instance variables
+  end
+  
+  def start_engine  # Define a method called `start_engine`
+    puts "The engine is now running."  # Prints a message indicating that the car's engine is running
+  end
+  
+  def stop_engine  # Define a method called `stop_engine`
+    puts "The engine has been turned off."  # Prints a message indicating that the car's engine is off
+  end
+  
+end  # End of the Car class
+
+# Create an object (instance) of the `Car` class
+my_car = Car.new("Toyota", "Camry")  # Create a new `Car` object, passing "Toyota" and "Camry" to the initialize method
+
+my_car.display_info  # Call the `display_info` method on `my_car` to display the car's information
+my_car.start_engine  # Call the `start_engine` method on `my_car` to simulate starting the engine
+my_car.stop_engine  # Call the `stop_engine` method on `my_car` to simulate stopping the engine
+```
+
+### **Explanation**:
+
+- **`class Car`**: Defines a class called `Car`. A class is like a blueprint for creating objects (like a car).
+  
+- **`def initialize(make, model)`**: This is a special method called the `initialize` method. It's automatically called when a new instance of the `Car` class is created. It accepts two parameters (`make` and `model`) and assigns them to instance variables (`@make` and `@model`). 
+
+- **`@make` and `@model`**: These are instance variables. They store the data specific to each object (like the make and model of a car). The `@` symbol is used to denote instance variables.
+
+- **`def display_info`**: This defines a regular method called `display_info`. Inside this method, we use `puts` to print the car's make and model to the screen. The `@make` and `@model` variables are accessed here.
+
+- **`def start_engine` and `def stop_engine`**: These are additional methods that print messages when called, simulating the starting and stopping of a car's engine.
+
+- **`my_car = Car.new("Toyota", "Camry")`**: This creates a new object of the `Car` class, passing `"Toyota"` and `"Camry"` as arguments to the `initialize` method.
+
+- **`my_car.display_info`**: This calls the `display_info` method on the `my_car` object, which displays the car's make and model.
+
+- **Calling Other Methods**: Similarly, calling `my_car.start_engine` and `my_car.stop_engine` simulates the behavior of starting and stopping the car's engine.
+
+### **What happens when the code runs?**
+1. The `Car` object `my_car` is created with the make "Toyota" and the model "Camry".
+2. The `display_info` method is called, which prints the car's make and model.
+3. The `start_engine` method is called, printing that the engine is running.
+4. The `stop_engine` method is called, printing that the engine is off.
+
+### **Summary**:
+- **Methods**: Functions that are defined inside a class to describe the behaviors of objects created from that class. 
+- **Instance Variables**: Variables like `@make` and `@model` that store the state (data) of each object.
+- **Calling Methods**: You can call a method on an object using the dot notation (`object.method_name`).
+
+Let me know if you'd like more examples or clarification!
 __________________________________________________________________________
 
 
