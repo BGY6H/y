@@ -100,14 +100,88 @@ __________________________________________________________________________
 
 
 
-`attr_reader`, `attr_writer`, `attr_accessor` – Define getter/setter methods for instance variables. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for `attr_reader`, `attr_writer`, `attr_accessor` – Define getter/setter methods for instance variables. put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
+Here’s a breakdown of how `attr_reader`, `attr_writer`, and `attr_accessor` work in Ruby, with comments beside each line of code to explain them in simple terms.
 
+### 1. **`attr_reader`** - Defines a getter method for an instance variable
+
+```ruby
+class Product
+  attr_reader :name  # Automatically creates a getter method for the `@name` instance variable
+
+  def initialize(name)
+    @name = name  # The instance variable `@name` is set in the initialize method
+  end
+end
+
+product = Product.new("Laptop")  # Creating a new Product object with "Laptop" as the name
+puts product.name  # Accesses the `@name` variable using the automatically created getter
+```
+
+#### Explanation:
+- `attr_reader :name` creates a method called `name` that returns the value of the `@name` instance variable.
+- When you call `product.name`, it will return `"Laptop"` without needing to write a separate method to do this.
+
+---
+
+### 2. **`attr_writer`** - Defines a setter method for an instance variable
+
+```ruby
+class Product
+  attr_writer :price  # Automatically creates a setter method for the `@price` instance variable
+
+  def initialize(price)
+    @price = price  # The instance variable `@price` is set in the initialize method
+  end
+end
+
+product = Product.new(1000)  # Creating a new Product object with 1000 as the price
+product.price = 1200  # Sets the `@price` variable to 1200 using the automatically created setter
+```
+
+#### Explanation:
+- `attr_writer :price` creates a method called `price=` that sets the value of the `@price` instance variable.
+- When you call `product.price = 1200`, it updates the value of `@price` to `1200`.
+
+---
+
+### 3. **`attr_accessor`** - Defines both getter and setter methods for an instance variable
+
+```ruby
+class Product
+  attr_accessor :stock  # Automatically creates both getter and setter methods for the `@stock` instance variable
+
+  def initialize(stock)
+    @stock = stock  # The instance variable `@stock` is set in the initialize method
+  end
+end
+
+product = Product.new(50)  # Creating a new Product object with 50 as the initial stock
+puts product.stock  # Accesses the `@stock` variable using the getter method
+product.stock = 100  # Updates the `@stock` variable using the setter method
+puts product.stock  # Accesses the updated value of `@stock`, which is now 100
+```
+
+#### Explanation:
+- `attr_accessor :stock` creates two methods: one to get the value of `@stock` (`stock`) and one to set it (`stock=`).
+- This means you can both access and modify the `@stock` variable directly without needing to write custom getter and setter methods.
+
+---
+
+### **Summary of Differences**:
+- `attr_reader` generates a **getter** method, allowing you to **read** the value of an instance variable.
+- `attr_writer` generates a **setter** method, allowing you to **write** or **modify** the value of an instance variable.
+- `attr_accessor` generates both a **getter** and a **setter** method, allowing both **read** and **write** access to the instance variable.
+
+These shorthand methods help make your code cleaner and more concise by automatically defining what would otherwise be repetitive getter and setter methods.
+
+Let me know if you need more examples or clarification!
 __________________________________________________________________________
 
 
 
-Methods – Functions defined within a class (`def my_method`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
+please give me ruby code for Methods – Functions defined within a class (`def my_method`). put a comment beside each line of code without skipping. some of my students have no prior programming concepts whatsoever 
 
 
 __________________________________________________________________________
